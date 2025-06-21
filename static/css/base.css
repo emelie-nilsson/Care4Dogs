@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*General*/
+:root {
+  --primary-font: "Nunito", sans-serif;
+  --secondary-font: "Raleway", sans-serif;
+  --primary-color: #332415; /*Dark brown*/
+  --secondary-color: #4a647a; /*Grey blue*/
+  --middle-color: #663115; /*Chestnut brown*/
+  --highlight-color: #e1dad4; /*Light beige*/
+  --light-highlight-color: #a08653; /*Gold brown*/
+}
+
+/*Main*/
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--primary-font);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--secondary-font);
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: var(--light-highlight-color);
+}
+
+/*Footer*/
+footer {
+    flex-shrink: 0;
+}
+
+/*Header*/
+.navbar {
+background-color: var(--highlight-color);
+}
+
+a.nav-link {
+color: var(--secondary-color);
+}
