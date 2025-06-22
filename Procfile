@@ -1,1 +1,1 @@
-web: gunicorn Care4Dogs.wsgi
+web: gunicorn main.wsgi:application
