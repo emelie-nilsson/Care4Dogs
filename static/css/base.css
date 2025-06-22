@@ -18,23 +18,68 @@ body {
     font-family: var(--primary-font);
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 h1, h2, h3, h4 {
     font-family: var(--secondary-font);
 }
 
+.page-container {
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 main {
-    flex: 1 0 auto;
-    background-color: var(--light-highlight-color);
+    flex: 1; /*pushing down the footer*/
 }
 
 /*Footer*/
+
 footer {
-    flex-shrink: 0;
+    width: 100%;
+    background-color: var(--highlight-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    margin: 1rem;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--light-highlight-color);
+}
+
+#social-networks {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+}
+
+#social-networks li {
+    margin: 0 0.5rem;
 }
 
 /*Header*/
 .navbar {
-background-color: var(--highlight-color);
+    background-color: var(--highlight-color) !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
 }
 
 a.nav-link {
