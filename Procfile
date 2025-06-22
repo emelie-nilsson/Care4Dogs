@@ -1,0 +1,1 @@
+web: gunicorn Care4Dogs.wsgi
