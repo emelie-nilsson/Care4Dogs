@@ -85,3 +85,45 @@ footer {
 a.nav-link {
 color: var(--secondary-color);
 }
+
+/*Log In, Sign Up*/
+.signup-card,
+.login-card {
+  background-color: var(--highlight-color);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/*Log In, Sign up buttons*/
+.custom-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+}
+
+.custom-btn:hover {
+  background-color: var(--light-highlight-color);
+  color: var(--primary-color);
+}
+
+.btn-primary {
+  background-color: var(--secondary-color); 
+  border-color: var(--secondary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--light-highlight-color); 
+  border-color: var(--light-highlight-color);
+  color: var(--primary-color);
+}
+
+.btn-outline-primary {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--light-highlight-color);
+  color: var(--primary-color);
+}
