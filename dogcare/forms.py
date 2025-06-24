@@ -4,8 +4,17 @@ from .models import DogCarePost
 class DogCarePostForm(forms.ModelForm):
     class Meta:
         model = DogCarePost
-        fields = ['title', 'content', 'post_type', 'location', 'image']
+        fields = [
+            'post_type',
+            'title',
+            'content',
+            'location',
+            'date_from',
+            'date_to',
+            'image',
+        ]
         widgets = {
-            'post_type': forms.Select(attrs={'class': 'form-select'}),
-            'content': forms.Textarea(attrs={'rows': 4}),
+            'post_type': forms.RadioSelect(choices=DogCarePost.POST_TYPE_CHOICES),
+            'date_from': forms.DateInput(attrs={'type': 'date'}),
+            'date_to': forms.DateInput(attrs={'type': 'date'}),
         }

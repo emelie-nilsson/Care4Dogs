@@ -16,6 +16,8 @@ class DogCarePost(models.Model):
     content = models.TextField()
     post_type = models.CharField(max_length=10, choices=POST_TYPE_CHOICES)
     location = models.CharField(max_length=100, blank=True)
+    date_from = models.DateField(null=True, blank=True)
+    date_to = models.DateField(null=True, blank=True)
     image = models.ImageField(upload_to='dogcare_images/', blank=True, null=True)
     date_posted = models.DateTimeField(auto_now_add=True)
 

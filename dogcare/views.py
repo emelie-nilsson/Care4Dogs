@@ -19,3 +19,11 @@ def post_create(request):
     else:
         form = DogCarePostForm()
     return render(request, 'dogcare/post_form.html', {'form': form})
+
+
+from django.shortcuts import render
+from .forms import DogCarePostForm  
+
+def post_create(request):
+    form = DogCarePostForm()
+    return render(request, 'dogcare/post_form.html', {'form': form})

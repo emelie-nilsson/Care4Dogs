@@ -1,0 +1,7 @@
+{% load form_tags %}
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.title|add_class:"form-control" }}
+  <button type="submit">Submit</button>
+</form>
