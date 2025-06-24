@@ -63,7 +63,8 @@ AUTHENTICATION_BACKENDS = (
 # Constants
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
-#LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = False
+LOGOUT_REDIRECT_URL = None
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
