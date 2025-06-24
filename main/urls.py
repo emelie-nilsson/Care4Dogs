@@ -24,6 +24,8 @@ urlpatterns = [
 
 # Log-out view that shows logout.html instead of returning to homepage
     path("accounts/logout/", LogoutView.as_view(template_name="allauth/account/logout.html"), name="account_logout"),
-    
+    path('dogcare/', include('dogcare.urls')),
     path("accounts/", include("allauth.urls")),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
