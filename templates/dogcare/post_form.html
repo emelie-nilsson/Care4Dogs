@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Add a New Dog Care Post</h2>
+
+  <form method="POST" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  </form>
+
+</div>
+{% endblock %}
