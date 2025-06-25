@@ -39,6 +39,15 @@ main {
     flex: 1; /*pushing down the footer*/
 }
 
+/*How it work section*/
+
+.how-it-works-section {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 5rem 0;
+  margin-top: 5rem;
+}
+
 /*Footer*/
 
 footer {

@@ -1,1 +1,90 @@
-{% extends 'base.html'%}
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <!-- Introduction -->
+    <div class="col-lg-6">
+      <h1 class="mb-4" style="color: var(--primary-color)">
+        Welcome to Care4Dogs!
+      </h1>
+      <p class="lead" style="color: var(--middle-color)">
+        Care4Dogs is a warm and supportive platform where dog owners can help
+        each other with dog care when life gets busy — whether it’s due to work,
+        travel, illness, or just needing a break.
+      </p>
+      <p style="color: var(--primary-color)">
+        Browse care requests, offer help to fellow dog lovers, or post your own.
+        It’s all about connection, trust, and making sure every dog gets the
+        love and attention they deserve.
+      </p>
+      <div class="mt-4">
+        <a href="{% url 'post_list' %}" class="btn btn-primary me-3"
+          >View All Posts</a
+        >
+        <a href="{% url 'post_create' %}" class="btn btn-primary me-3"
+          >Create a Post</a
+        >
+      </div>
+    </div>
+
+    <!-- Image -->
+    <div class="col-lg-6 mt-4 mt-lg-0">
+      <img
+        src="{% static 'images/welcome.jpg' %}"
+        alt="Welcome dogs"
+        class="img-fluid rounded shadow"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- How does it work? -->
+<section class="how-it-works-section">
+  <div class="container">
+    <h2 class="text-center mb-5" style="color: var(--primary-color)">
+      How It Works
+    </h2>
+    <div class="row text-center">
+      <!-- Step 1 -->
+      <div class="col-md-4 mb-4">
+        <i
+          class="fas fa-paw fa-3x mb-3"
+          style="color: var(--secondary-color)"
+        ></i>
+        <h4 class="mb-2" style="color: var(--middle-color)">Create a Post</h4>
+        <p class="text-muted">
+          Need help caring for your dog? or want to offer your support to
+          another dog owner?<br> — Post a request with dates and location. It only
+          takes a minute!
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="col-md-4 mb-4">
+        <i
+          class="fas fa-comments fa-3x mb-3"
+          style="color: var(--secondary-color)"
+        ></i>
+        <h4 class="mb-2" style="color: var(--middle-color)">Connect</h4>
+        <p class="text-muted">
+          Other dog lovers can view your post and reach out to help or ask
+          questions.
+        </p>
+      </div>
+
+      <!-- Steg 3 -->
+      <div class="col-md-4 mb-4">
+        <i
+          class="fas fa-heart fa-3x mb-3"
+          style="color: var(--secondary-color)"
+        ></i>
+        <h4 class="mb-2" style="color: var(--middle-color)">Help Each Other</h4>
+        <p class="text-muted">
+          Meet, build trust, and help each other out — because our dogs deserve
+          the best care.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
