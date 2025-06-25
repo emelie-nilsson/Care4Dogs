@@ -19,6 +19,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LogoutView
+# Testing 404-page
+from django.shortcuts import render
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,3 +35,11 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Testing 404-page
+def trigger_404(request):
+    return render(request, '404.html', status=404)
+
+urlpatterns += [
+    path("test-404/", trigger_404),
+]
