@@ -48,6 +48,49 @@ main {
   margin-top: 5rem;
 }
 
+/*Review*/
+/* All quotes */
+.quote-snippet {
+  padding: 0.1rem 0.8rem;
+  font-family: var(--primary-font);
+  line-height: 1.2;
+}
+
+/* Adjustments for different placements */
+.quote-left {
+  max-width: 480px;
+  margin-left: 0;
+  margin-right: auto;
+  margin-top: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.quote-right {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.quote-center {
+  max-width: 600px;
+  margin: 0.6rem auto 0.3rem auto;
+}
+
+.quote-text {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 0.1rem;
+}
+
+.quote-author {
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 0;
+}
+
 /*Footer*/
 
 footer {
