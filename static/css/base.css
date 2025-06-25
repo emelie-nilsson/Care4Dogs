@@ -42,13 +42,18 @@ main {
 /*Footer*/
 
 footer {
-    width: 100%;
-    background-color: var(--highlight-color);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+  width: 100vw;
+  background-color: var(--highlight-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .social-icon {
