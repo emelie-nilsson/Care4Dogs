@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField  # Lägg till denna import
 
 """
 A model to create and manage requests of dogcare
@@ -18,7 +19,7 @@ class DogCarePost(models.Model):
     location = models.CharField(max_length=100, blank=True)
     date_from = models.DateField(null=True, blank=True)
     date_to = models.DateField(null=True, blank=True)
-    image = models.ImageField(upload_to='dogcare_images/', blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True, default='placeholder')  
     date_posted = models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -54,7 +54,17 @@ INSTALLED_APPS = [
     # Other
     'crispy_forms',
     'crispy_bootstrap5',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Cloudinary credentials (lägg in miljövariabler i production)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'din-cloud-name',
+    'API_KEY': 'din-api-key',
+    'API_SECRET': 'din-api-secret',
+}
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
