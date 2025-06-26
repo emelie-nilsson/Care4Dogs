@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField  # Lägg till denna import
+from django.utils.timezone import now
 
 """
 A model to create and manage requests of dogcare
@@ -21,6 +22,10 @@ class DogCarePost(models.Model):
     date_to = models.DateField(null=True, blank=True)
     image = CloudinaryField('image', blank=True, null=True, default='care4dogs/default')  
     date_posted = models.DateTimeField(auto_now_add=True)
+
+
+    date_from = models.DateField(default=now)
+    date_to = models.DateField(default=now)
 
     class Meta:
         ordering = ['-date_posted']
