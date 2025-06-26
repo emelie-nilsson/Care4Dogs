@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ post.title }}</h2>
+
+  {% if post.image %}
+    <img src="{{ post.image.url }}" alt="Bild för {{ post.title }}" class="img-fluid mb-3" style="max-width: 500px;">
+  {% endif %}
+
+  <p>{{ post.content|linebreaks }}</p>
+
+  <span class="badge bg-info text-dark">{{ post.get_post_type_display }}</span>
+  <small class="text-muted d-block mb-3">Posted by {{ post.user.username }} on {{ post.date_posted|date:"Y-m-d H:i" }}</small>
+
+  <a href="{% url 'post_list' %}" class="btn btn-secondary mt-3">Back to Posts</a>
+</div>
+{% endblock %}

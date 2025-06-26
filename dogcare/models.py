@@ -19,7 +19,7 @@ class DogCarePost(models.Model):
     location = models.CharField(max_length=100, blank=True)
     date_from = models.DateField(null=True, blank=True)
     date_to = models.DateField(null=True, blank=True)
-    image = CloudinaryField('image', blank=True, null=True, default='placeholder')  
+    image = CloudinaryField('image', blank=True, null=True, default='care4dogs/default')  
     date_posted = models.DateTimeField(auto_now_add=True)
 
     class Meta:

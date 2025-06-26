@@ -13,8 +13,14 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+
 if os.path.isfile('env.py'):
     import env
+
+import cloudinary
+cloudinary.config(
+    cloudinary_url=os.getenv("CLOUDINARY_URL")
+)    
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -56,15 +62,9 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'cloudinary',
     'cloudinary_storage',
+    'django_extensions',
 ]
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-# Cloudinary credentials (lägg in miljövariabler i production)
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'din-cloud-name',
-    'API_KEY': 'din-api-key',
-    'API_SECRET': 'din-api-secret',
-}
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
