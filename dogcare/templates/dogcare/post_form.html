@@ -2,8 +2,13 @@
 {% load form_tags %}
 
 {% block content %}
-<div class="container mt-5 mb-5">  <!-- extra bottom margin -->
-  <h2>Add a New Dog Care Post</h2>
+<div class="container mt-5 mb-5">
+
+  {% if form.instance.pk %}
+    <h2>Edit Post: {{ form.instance.title }}</h2>
+  {% else %}
+    <h2>Add a New Dog Care Post</h2>
+  {% endif %}
 
   <form method="POST" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
@@ -50,7 +55,10 @@
       {{ form.image.errors }}
     </div>
 
-    <button type="submit" class="btn btn-primary">Publish</button>
+    <button type="submit" class="btn btn-primary">
+      {% if form.instance.pk %}Save Changes{% else %}Publish{% endif %}
+    </button>
+    <a href="{% if form.instance.pk %}{% url 'post_detail' post.id %}{% else %}{% url 'post_list' %}{% endif %}" class="btn btn-secondary ms-2">Cancel</a>
   </form>
 </div>
 {% endblock %}

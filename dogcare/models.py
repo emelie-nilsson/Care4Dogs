@@ -24,9 +24,20 @@ class DogCarePost(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)  
     last_updated = models.DateTimeField(auto_now=True) 
 
+    # Likes
+    likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
 
     class Meta:
         ordering = ['-date_posted']
 
     def __str__(self):
         return f"{self.title} ({self.get_post_type_display()})"
+    
+class Comment(models.Model):  
+    post = models.ForeignKey(DogCarePost, on_delete=models.CASCADE, related_name='comments')  # NYTT
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  
+    content = models.TextField()  
+    created_at = models.DateTimeField(auto_now_add=True)  
+
+    def __str__(self):  
+        return f"Comment by {self.user.username} on {self.post.title}"

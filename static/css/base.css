@@ -140,6 +140,32 @@ main {
   color: var(--middle-color);
 }
 
+/*Post details*/
+.comment-box {
+  background-color: var(--highlight-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+.like-button {
+  font-size: 1.5rem;
+  color: gray;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.like-button:hover {
+  color: var(--middle-color);
+}
+
+.post-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
 
 
 /*Footer*/
@@ -234,4 +260,11 @@ color: var(--secondary-color);
 .btn-outline-primary:hover {
   background-color: var(--light-highlight-color);
   color: var(--primary-color);
+}
+
+/* Image on post details */
+@media (min-width: 768px) {
+  .post-image {
+    max-width: 500px;
+  }
 }
