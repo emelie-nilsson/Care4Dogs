@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import DogCarePost, Comment  # NYTT: Importera Comment
-from .forms import DogCarePostForm, CommentForm  # NYTT: Importera CommentForm
+from .models import DogCarePost, Comment  
+from .forms import DogCarePostForm, CommentForm  
 
 def post_list(request):
     posts = DogCarePost.objects.all()
@@ -9,7 +9,7 @@ def post_list(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(DogCarePost, id=post_id)
-    comments = post.comments.all().order_by('-created_at')  # NYTT: Hämta kommentarer sorterade senaste först
+    comments = post.comments.all().order_by('-created_at')  
 
     liked = False
     total_likes = post.likes.count()
@@ -71,11 +71,11 @@ def post_delete(request, post_id):
     return render(request, 'dogcare/post_confirm_delete.html', {'post': post})
 
 @login_required
-def toggle_like(request, pk):
-    post = get_object_or_404(DogCarePost, pk=pk)
+def toggle_like(request, post_id):
+    post = get_object_or_404(DogCarePost, id=post_id)
     user = request.user
     if post.likes.filter(id=user.id).exists():
         post.likes.remove(user)
     else:
         post.likes.add(user)
-    return redirect('post_detail', pk=pk)
+    return redirect('post_detail', post_id=post_id)
