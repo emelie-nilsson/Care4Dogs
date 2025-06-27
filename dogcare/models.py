@@ -21,7 +21,8 @@ class DogCarePost(models.Model):
     date_from = models.DateField(null=True, blank=True)
     date_to = models.DateField(null=True, blank=True)
     image = CloudinaryField('image', blank=True, null=True, default='care4dogs/default')  
-    date_posted = models.DateTimeField(auto_now_add=True)
+    date_posted = models.DateTimeField(auto_now_add=True)  
+    last_updated = models.DateTimeField(auto_now=True) 
 
 
     class Meta:

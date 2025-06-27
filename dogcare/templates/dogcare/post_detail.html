@@ -17,10 +17,11 @@
   <p><strong>To:</strong> {{ post.date_to|date:"Y-m-d" }}</p>
 
   <span class="badge bg-info text-dark">{{ post.get_post_type_display }}</span>
-  <small class="text-muted d-block mb-3"
-    >Posted by {{ post.user.username }} on {{ post.date_posted|date:"Y-m-d H:i"
-    }}</small
-  >
+  <p><strong>Posted by {{ post.user.username }} on {{ post.date_posted|date:"Y-m-d H:i" }}</strong></p>
+
+    {% if post.last_updated != post.date_posted %}
+      <p><em>Last updated: {{ post.last_updated|date:"Y-m-d H:i" }}</em></p>
+    {% endif %}
 
   <a href="{% url 'post_list' %}" class="btn btn-primary">Back to Posts</a>
 </div>
