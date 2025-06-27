@@ -24,9 +24,6 @@ class DogCarePost(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
 
 
-    date_from = models.DateField(default=now)
-    date_to = models.DateField(default=now)
-
     class Meta:
         ordering = ['-date_posted']
 
