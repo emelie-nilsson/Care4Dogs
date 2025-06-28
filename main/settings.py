@@ -85,6 +85,7 @@ LOGOUT_REDIRECT_URL = None
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -175,7 +176,7 @@ LOGIN_URL = '/accounts/login/'
 ACCOUNT_LOGOUT_ON_GET = True
 
 # Static and Media files
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # Used by collectstatic in production

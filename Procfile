@@ -1,1 +1,1 @@
-web: gunicorn main.wsgi:application
+web: bash heroku_postbuild.sh && gunicorn main.wsgi:application
