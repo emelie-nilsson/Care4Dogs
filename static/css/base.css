@@ -53,7 +53,6 @@ main {
   color: var(--middle-color) !important;
 }
 
-
 /* How It Works Section */
 .how-it-works-section {
   background-color: #fff;
@@ -75,7 +74,6 @@ main {
   color: var(--middle-color);
   font-family: var(--secondary-font);
 }
-
 
 /* Review */
 .quote-snippet {
@@ -168,7 +166,6 @@ main {
   font-size: 0.85rem;
   color: var(--middle-color);
 }
-
 
 /* Post Details */
 .comment-box {
@@ -289,7 +286,6 @@ a.nav-link {
   color: var(--primary-color);
 }
 
-
 /*  Media Queries */
 @media (min-width: 768px) {
   .post-image {
@@ -338,10 +334,11 @@ a.nav-link {
   }
 
   .navbar-nav .nav-item {
-  margin-bottom: 0.5rem;
-}
-/*Parallell buttons*/
- .form-actions .btn {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Parallell buttons */
+  .form-actions .btn {
     width: 100%;
     margin-bottom: 0.75rem;
   }
