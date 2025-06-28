@@ -13,34 +13,35 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-
-if os.path.isfile('env.py'):
-    import env
-
 import cloudinary
-cloudinary.config(
-    cloudinary_url=os.getenv("CLOUDINARY_URL")
-)    
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+# Load local environment variables if present
+if os.path.isfile('env.py'):
+    import env 
+
+
+# Validate that CLOUDINARY_URL is set
+cloudinary_url = os.getenv("CLOUDINARY_URL")
+if not cloudinary_url:
+    raise ValueError("CLOUDINARY_URL environment variable is not set")
+
+cloudinary.config(cloudinary_url=cloudinary_url) 
+
+
+# Build paths inside the project 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Security settings
 SECRET_KEY = os.environ.get('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEVELOPMENT") == "True"
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'localhost']
 
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
 
-
-# Application definition
-
+# Installed apps
 INSTALLED_APPS = [
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,35 +49,38 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Apps
+    # Local apps
     'home',
     'dogcare',
+
+    # Other apps
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'django_summernote',
-
-    # Other
     'crispy_forms',
     'crispy_bootstrap5',
     'cloudinary',
     'cloudinary_storage',
     'django_extensions',
 ]
+
+# Cloudinary storage for media files
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# Authentication settings
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 )
-# Get mail in the terminal instead of sending them
+
+# Email backend (console for development)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Constants
+# Allauth settings
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_ON_GET = False
 LOGOUT_REDIRECT_URL = None
 
 MIDDLEWARE = [
@@ -90,11 +94,13 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
+# Crispy forms settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 ROOT_URLCONF = 'main.urls'
 
+# URLs and templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -119,21 +125,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
+# Database configuration
+# Use SQLite for local development, and PostgreSQL via dj_database_url in production
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.environ.get("DEVELOPMENT") == "True":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -151,41 +159,30 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
-# Account Setup
-
+# Allauth account setup
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_EMAIL_VERIFCATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
+# Static and Media files
 STATIC_URL = 'static/'
-
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-import os
+# Used by collectstatic in production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
