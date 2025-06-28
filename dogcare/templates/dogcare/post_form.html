@@ -4,6 +4,7 @@
 {% block content %}
 <div class="container mt-5 mb-5">
 
+  <!-- Title -->
   {% if form.instance.pk %}
     <h2>Edit Post: {{ form.instance.title }}</h2>
   {% else %}
@@ -14,51 +15,67 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
 
+    <!-- Select post type -->
     <div class="mb-3">
       <label class="form-label">Post type:</label><br>
       {{ form.post_type }}
     </div>
 
+    <!-- Title -->
     <div class="mb-3">
       <label for="{{ form.title.id_for_label }}" class="form-label">Title:</label>
       {{ form.title|add_class:"form-control" }}
       {{ form.title.errors }}
     </div>
 
+    <!-- Description -->
     <div class="mb-3">
       <label for="{{ form.content.id_for_label }}" class="form-label">Description:</label>
       {{ form.content|add_class:"form-control" }}
       {{ form.content.errors }}
     </div>
 
+    <!-- Location -->
     <div class="mb-3">
       <label for="{{ form.location.id_for_label }}" class="form-label">Location:</label>
       {{ form.location|add_class:"form-control" }}
       {{ form.location.errors }}
     </div>
 
+    <!-- From Date -->
     <div class="mb-3">
       <label for="{{ form.date_from.id_for_label }}" class="form-label">Date from:</label>
       {{ form.date_from|add_class:"form-control" }}
       {{ form.date_from.errors }}
     </div>
 
+    <!-- To Date -->
     <div class="mb-3">
       <label for="{{ form.date_to.id_for_label }}" class="form-label">Date to:</label>
       {{ form.date_to|add_class:"form-control" }}
       {{ form.date_to.errors }}
     </div>
 
+    <!-- Upload Image -->
     <div class="mb-3">
       <label for="{{ form.image.id_for_label }}" class="form-label">Image (optional):</label>
       {{ form.image|add_class:"form-control" }}
       {{ form.image.errors }}
     </div>
 
-    <button type="submit" class="btn btn-primary">
-      {% if form.instance.pk %}Save Changes{% else %}Publish{% endif %}
-    </button>
-    <a href="{% if form.instance.pk %}{% url 'post_detail' post.id %}{% else %}{% url 'post_list' %}{% endif %}" class="btn btn-secondary ms-2">Cancel</a>
+    <!-- Submit and Cancel buttons -->
+    <div class="row g-2 mt-4">
+      <div class="col-12 col-md">
+        <button type="submit" class="btn btn-primary w-100">
+          {% if form.instance.pk %}Save Changes{% else %}Publish{% endif %}
+        </button>
+      </div>
+      <div class="col-12 col-md">
+        <a href="{% if form.instance.pk %}{% url 'post_detail' post.id %}{% else %}{% url 'post_list' %}{% endif %}" class="btn btn-secondary w-100">
+          Cancel
+        </a>
+      </div>
+    </div>
   </form>
 </div>
 {% endblock %}

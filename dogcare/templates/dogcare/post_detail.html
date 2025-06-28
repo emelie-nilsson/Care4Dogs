@@ -1,6 +1,4 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="container mt-4">
   <h2>{{ post.title }}</h2>
 
@@ -13,12 +11,17 @@
   {% endif %}
 
   <p>{{ post.content|linebreaks }}</p>
-  <p class="text-muted fst-italic small">📅 From: {{ post.date_from|date:"Y-m-d" }}</p>
-  <p class="text-muted fst-italic small">📅 To: {{ post.date_to|date:"Y-m-d" }}</p>
+  <p class="text-muted fst-italic small">
+    📅 From: {{ post.date_from|date:"Y-m-d" }}
+  </p>
+  <p class="text-muted fst-italic small">
+    📅 To: {{ post.date_to|date:"Y-m-d" }}
+  </p>
   <p class="text-muted fst-italic small">📍 {{ post.location }}</p>
 
   <p class="text-muted fst-italic small">
-    🐾 Posted by {{ post.user.username }} on {{ post.date_posted|date:"Y-m-d H:i" }}
+    🐾 Posted by {{ post.user.username }} on {{ post.date_posted|date:"Y-m-d
+    H:i" }}
   </p>
 
   {% if post.last_updated != post.date_posted %}
@@ -28,38 +31,57 @@
   {% endif %}
 
   <!-- Back + Edit/Delete -->
-  <div class="d-flex justify-content-between align-items-center mt-4 mb-3 flex-wrap">
-    <a href="{% url 'post_list' %}" class="btn btn-primary mb-2">Back to Posts</a>
+  <div
+    class="d-flex justify-content-between align-items-center mt-4 mb-3 flex-wrap"
+  >
+    <a href="{% url 'post_list' %}" class="btn btn-primary mb-2"
+      >Back to Posts</a
+    >
 
     {% if user == post.user %}
-    <div class="text-end">
-      <a href="{% url 'post_edit' post.id %}" class="btn btn-outline-secondary me-2">Edit</a>
-      <a href="{% url 'post_delete' post.id %}" class="btn btn-outline-danger">Delete</a>
+    <div class="row g-2 mt-3">
+      <div class="col-12 col-md-auto">
+        <a
+          href="{% url 'post_edit' post.id %}"
+          class="btn btn-outline-primary w-100"
+          >Edit</a
+        >
+      </div>
+      <div class="col-12 col-md-auto">
+        <a
+          href="{% url 'post_delete' post.id %}"
+          class="btn btn-outline-danger w-100"
+          >Delete</a
+        >
+      </div>
     </div>
     {% endif %}
   </div>
 
-  <hr>
+  <hr />
 
   <!-- List of comments -->
   <h5>Comments ({{ comments.count }})</h5>
   {% for comment in comments %}
-    <div class="comment-box">
-      <strong>{{ comment.user.username }}</strong>
-      <small class="text-muted">{{ comment.created_at|date:"Y-m-d H:i" }}</small>
-      <p>{{ comment.content|linebreaks }}</p>
-    </div>
+  <div class="comment-box">
+    <strong>{{ comment.user.username }}</strong>
+    <small class="text-muted">{{ comment.created_at|date:"Y-m-d H:i" }}</small>
+    <p>{{ comment.content|linebreaks }}</p>
+  </div>
   {% endfor %}
 
   <!-- Comment form-->
   {% if user.is_authenticated %}
-  <form method="POST" action="" class="d-flex flex-column flex-md-row align-items-start gap-3">
+  <form
+    method="POST"
+    action=""
+    class="d-flex flex-column flex-md-row align-items-start gap-3"
+  >
     {% csrf_token %}
 
     <div class="flex-grow-1 w-100">
-      {{ form.content }}
-      {% if form.content.errors %}
-        <div class="text-danger">{{ form.content.errors }}</div>
+      {{ form.content }} {% if form.content.errors %}
+      <div class="text-danger">{{ form.content.errors }}</div>
       {% endif %}
     </div>
 
@@ -69,16 +91,25 @@
   </form>
 
   <!-- Like form (separat) -->
-  <form action="{% url 'post_like' post.id %}" method="POST" class="mt-3 ms-auto d-flex align-items-center" style="width: fit-content;">
+  <form
+    action="{% url 'post_like' post.id %}"
+    method="POST"
+    class="mt-3 ms-auto d-flex align-items-center"
+    style="width: fit-content"
+  >
     {% csrf_token %}
-    <button type="submit" class="btn btn-link like-button {% if liked %}liked{% else %}not-liked{% endif %}" title="Like">
+    <button
+      type="submit"
+      class="btn btn-link like-button {% if liked %}liked{% else %}not-liked{% endif %}"
+      title="Like"
+    >
       ♥
     </button>
     <span>{{ total_likes }}</span>
   </form>
 
   {% else %}
-  <p><a href="{% url 'login' %}">Log in</a> to like and comment.</p>
+  <p><a href="{% url 'account_login' %}">Log in</a> to like and comment.</p>
   {% endif %}
 </div>
 {% endblock %}

@@ -1,45 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-/*General*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* General */
 :root {
   --primary-font: "Nunito", sans-serif;
   --secondary-font: "Raleway", sans-serif;
-  --primary-color: #332415; /*Dark brown*/
-  --secondary-color: #4a647a; /*Grey blue*/
-  --middle-color: #663115; /*Chestnut brown*/
-  --highlight-color: #e1dad4; /*Light beige*/
-  --light-highlight-color: #a08653; /*Gold brown*/
+  --primary-color: #332415; /* Dark brown */
+  --secondary-color: #4a647a; /* Grey blue */
+  --middle-color: #663115; /* Chestnut brown */
+  --highlight-color: #e1dad4; /* Light beige */
+  --light-highlight-color: #a08653; /* Gold brown */
 }
 
-/*Main*/
 body {
-    display: flex;
-    flex-direction: column;
-    font-family: var(--primary-font);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--primary-font);
 }
 
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4 {
-    font-family: var(--secondary-font);
+  font-family: var(--secondary-font);
 }
 
 .page-container {
-    min-height: 100vh;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 main {
-    flex: 1; /*pushing down the footer*/
+  flex: 1;
 }
 
-/*How it work section*/
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-secondary {
+  color: var(--secondary-color) !important;
+}
+
+.text-middle {
+  color: var(--middle-color) !important;
+}
+
+
+/* How It Works Section */
 .how-it-works-section {
   background-color: #fff;
   border-top: 1px solid #ddd;
@@ -47,29 +62,43 @@ main {
   margin-top: 5rem;
 }
 
-/*Review*/
-/* All quotes */
+.how-title {
+  font-family: var(--secondary-font);
+  color: var(--primary-color);
+}
+
+.how-icon {
+  color: var(--secondary-color);
+}
+
+.how-step h4 {
+  color: var(--middle-color);
+  font-family: var(--secondary-font);
+}
+
+
+/* Review */
 .quote-snippet {
   padding: 0.1rem 0.8rem;
   font-family: var(--primary-font);
   line-height: 1.2;
 }
 
-/* Adjustments for different placements */
-.quote-left {
+.quote-left,
+.quote-right {
   max-width: 480px;
-  margin-left: 0;
-  margin-right: auto;
   margin-top: 0.6rem;
   margin-bottom: 0.3rem;
 }
 
+.quote-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
 .quote-right {
-  max-width: 480px;
   margin-left: auto;
   margin-right: 0;
-  margin-top: 0.6rem;
-  margin-bottom: 0.3rem;
 }
 
 .quote-center {
@@ -90,8 +119,7 @@ main {
   margin-bottom: 0;
 }
 
-/* Post list */
-
+/* Post List */
 .card {
   border-radius: 0.5rem;
   overflow: hidden;
@@ -109,6 +137,7 @@ main {
   color: var(--secondary-color); 
   margin: 0;
 }
+
 .card-title a {
   color: var(--secondary-color) !important; 
   transition: color 0.3s ease;
@@ -140,7 +169,8 @@ main {
   color: var(--middle-color);
 }
 
-/*Post details*/
+
+/* Post Details */
 .comment-box {
   background-color: var(--highlight-color);
   padding: 1rem;
@@ -166,10 +196,7 @@ main {
   border-radius: 0.5rem;
 }
 
-
-
-/*Footer*/
-
+/* Footer */
 footer {
   width: 100vw;
   background-color: var(--highlight-color);
@@ -186,41 +213,41 @@ footer {
 }
 
 .social-icon {
-    font-size: 1.5rem;
-    margin: 1rem;
-    color: var(--secondary-color);
-    transition: color 0.3s ease;
+  font-size: 1.5rem;
+  margin: 1rem;
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-    color: var(--light-highlight-color);
+  color: var(--light-highlight-color);
 }
 
 #social-networks {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
 }
 
 #social-networks li {
-    margin: 0 0.5rem;
+  margin: 0 0.5rem;
 }
 
-/*Header*/
+/* Header */
 .navbar {
-    background-color: var(--highlight-color) !important;
-    box-shadow: none !important;
-    opacity: 1 !important;
-    backdrop-filter: none !important;
+  background-color: var(--highlight-color) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
 }
 
 a.nav-link {
-color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
-/*Log In, Sign Up*/
+/* Log In, Sign Up Forms */
 .signup-card,
 .login-card {
   background-color: var(--highlight-color);
@@ -229,7 +256,7 @@ color: var(--secondary-color);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
 }
 
-/*Log In, Sign up buttons*/
+/* Log In, Sign Up Buttons */
 .custom-btn {
   background-color: var(--secondary-color);
   color: white;
@@ -262,9 +289,60 @@ color: var(--secondary-color);
   color: var(--primary-color);
 }
 
-/* Image on post details */
+
+/*  Media Queries */
 @media (min-width: 768px) {
   .post-image {
     max-width: 500px;
+  }
+}
+
+@media (max-width: 991px) {
+  .how-step {
+    padding: 1rem 0;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .quote-snippet {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .quote-author {
+    text-align: center;
+    display: block;
+  }
+
+  .quote-left,
+  .quote-right,
+  .quote-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .how-it-works-section {
+    padding: 3rem 1rem;
+  }
+
+  .page-container {
+    padding: 0 1rem;
+  }
+
+  .navbar-nav .nav-item {
+  margin-bottom: 0.5rem;
+}
+/*Parallell buttons*/
+ .form-actions .btn {
+    width: 100%;
+    margin-bottom: 0.75rem;
   }
 }
