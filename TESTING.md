@@ -54,7 +54,7 @@ Below are all user stories with their corresponding test validation steps.
 
 | Acceptance Criteria                                           | Steps to Test                                            | Expected Outcome                                                   | Pass/Fail | Screenshot |
 |---------------------------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------|-----------|------------|
-| Post includes location, date(s), and a description            | Fill out new request form                                 | All fields are available and can be submitted                      | Pass          |   ![Post form](static\images\userstory4a.png) ![Post form](static\images\userstory4b.png)        |
+| Post includes location, date(s), and a description            | Fill out new request form                                 | All fields are available and can be submitted                      | Pass          |   ![Post form](static\images\userstory4b.png)        |
 | Other users can view and respond to the request               | Log in with another user and view posts                   | Request is visible and interaction options are available           |   Pass        |    ![Comment section](static\images\userstory4c.png)        |
 | User can edit or delete the request                           | Open own post                                             | Edit and delete buttons are visible                                | Pass          |  ![Edit and Delete](static\images\userstory4d.png)          |
 
@@ -85,9 +85,9 @@ Below are all user stories with their corresponding test validation steps.
 
 | Acceptance Criteria                                           | Steps to Test                                            | Expected Outcome                                                   | Pass/Fail | Screenshot |
 |---------------------------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------|-----------|------------|
-| Edit and delete buttons are only visible to the post author   | Log in as another user and view someone else's post       | No edit or delete options shown                                    |  Pass         |            |
+| Edit and delete buttons are only visible to the post author   | Log in as another user and view someone else's post       | No edit or delete options shown                                    |  Pass         |  ![Compare posts](static\images\userstory7a.png)          |
 | Users can edit or delete their own posts at any time          | Log in as author, open own post                           | Edit and delete options are shown                                  |  Pass         |        ![Like counter](static\images\userstory7b.png)    |
-| Changes are immediately reflected on the platform             | Edit content and save                                     | Updated content appears instantly                                  |           |            |
+| Changes are immediately reflected on the platform             | Edit content and save                                     | Updated content appears instantly                                  | Pass          |    ![Update time](static\images\userstory7c.png)        |
 
 ---
 
@@ -96,7 +96,7 @@ Below are all user stories with their corresponding test validation steps.
 
 | Acceptance Criteria                                           | Steps to Test                                            | Expected Outcome                                                   | Pass/Fail | Screenshot |
 |---------------------------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------|-----------|------------|
-| Admin has access to a dashboard with all user posts           | Log in as admin and access admin dashboard                | All user posts are visible                                         |           |            |
+| Admin has access to a dashboard with all user posts           | Log in as admin and access admin dashboard                | All user posts are visible                                         | Pass          |  ![Admin dashboard](static\images\userstory8.png)          |
 
 
 ---
@@ -106,6 +106,6 @@ Below are all user stories with their corresponding test validation steps.
 
 | Acceptance Criteria                                           | Steps to Test                                            | Expected Outcome                                                   | Pass/Fail | Screenshot |
 |---------------------------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------|-----------|------------|
-| Admin can delete any post                                     | Log in as admin and delete any user’s post                | Post is removed                         |           |            |
-| A confirmation message appears before a post gets deleted                | Click delete on a post                                    | Prompt confirms the action                                        |   Pass        |            |
-| Deleted posts are removed immediately from public view        | Confirm deletion                                          | Post no longer visible to any user                                |  Pass         |            |
+| Admin can delete any post                                     | Log in as admin and delete any user’s post                | Post is removed                         |   Pass        |     ![Confirmation of deleted post](static\images\userstory9a.png)       |
+| A confirmation message appears before a post gets deleted                | Click delete on a post                                    | Prompt confirms the action                                        |   Pass        |  ![Confirmation before delete](static\images\userstory9b.png)           |
+| Deleted posts are removed immediately from public view        | Confirm deletion                                          | Post no longer visible to any user                                |  Pass         |  ![Post deleted](static\images\userstory9c.png)           |
