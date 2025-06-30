@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 import dj_database_url
 import cloudinary
+
 
 
 # Load local environment variables if present
@@ -21,12 +23,18 @@ if os.path.isfile('env.py'):
     import env 
 
 
-# Validate that CLOUDINARY_URL is set
-cloudinary_url = os.getenv("CLOUDINARY_URL")
-if not cloudinary_url:
-    raise ValueError("CLOUDINARY_URL environment variable is not set")
+# Only configure Cloudinary if NOT running tests
+if 'test' not in sys.argv:
+    cloudinary_url = os.getenv("CLOUDINARY_URL")
+    if not cloudinary_url:
+        raise ValueError("CLOUDINARY_URL environment variable is not set")
+    cloudinary.config(cloudinary_url=cloudinary_url)
 
-cloudinary.config(cloudinary_url=cloudinary_url) 
+# Choose file storage depending on environment
+if 'test' in sys.argv:
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+else:
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # Build paths inside the project 
@@ -65,9 +73,6 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django_extensions',
 ]
-
-# Cloudinary storage for media files
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Authentication settings
 AUTHENTICATION_BACKENDS = (
