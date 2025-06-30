@@ -18,6 +18,13 @@ class DogCarePostForm(forms.ModelForm):
             'date_from': forms.DateInput(attrs={'type': 'date'}),
             'date_to': forms.DateInput(attrs={'type': 'date'}),
         }
+    def clean(self):
+        cleaned_data = super().clean()
+        date_from = cleaned_data.get("date_from")
+        date_to = cleaned_data.get("date_to")
+
+        if date_from and date_to and date_to < date_from:
+            self.add_error("date_to", "End date cannot be before start date.")    
 
 # Form for comments
 class CommentForm(forms.ModelForm):

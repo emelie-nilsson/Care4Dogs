@@ -109,3 +109,26 @@ Below are all user stories with their corresponding test validation steps.
 | Admin can delete any post                                     | Log in as admin and delete any user’s post                | Post is removed                         |   Pass        |     ![Confirmation of deleted post](static\images\userstory9a.png)       |
 | A confirmation message appears before a post gets deleted                | Click delete on a post                                    | Prompt confirms the action                                        |   Pass        |  ![Confirmation before delete](static\images\userstory9b.png)           |
 | Deleted posts are removed immediately from public view        | Confirm deletion                                          | Post no longer visible to any user                                |  Pass         |  ![Post deleted](static\images\userstory9c.png)           |
+---
+### Form Validation Tests
+
+These automated tests ensure that key form validation logic works as expected. All tests were written using Django’s TestCase framework and can be run with `python manage.py test`.
+
+#### ✅ CommentForm
+
+| Test Name           | Purpose                                  | Result |
+|---------------------|-------------------------------------------|--------|
+| test_form_is_valid  | Checks that the comment form validates when content is provided | ✅ Passes |
+
+#### ✅ DogCarePostForm
+
+| Test Name                     | Purpose                                                                 | Result |
+|-------------------------------|-------------------------------------------------------------------------|--------|
+| test_valid_form               | Ensures form passes with all required fields                           | ✅ Passes |
+| test_missing_title            | Ensures form fails if title is empty                                   | ✅ Passes |
+| test_missing_dates            | Ensures form fails if date_from or date_to are missing                 | ✅ Passes |
+| test_date_to_before_date_from| Ensures form fails if end date is before start date, using custom clean() | ✅ Passes |
+
+---
+
+> All form validation tests passed successfully as of `2025-06-30`. The forms now include custom validation logic for date order.
