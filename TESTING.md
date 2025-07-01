@@ -8,7 +8,7 @@
 - [ Bugs](#-bugs)
 - [ Further Testing Ideas](#5-further-testing-ideas)
 
-
+---
 
 ### User Stories
 
@@ -151,15 +151,21 @@ Purpose: To verify that the views work correctly without triggering Cloudinary e
 
 ### Responsive Design Testing
 
-The application was tested across multiple screen sizes using Chrome DevTools, and with [Am I Responsive](http://ami.responsivedesign.is/).
+The application was tested across multiple screen sizes, with Chrome DevTools, and with [Am I Responsive](http://ami.responsivedesign.is/).
 
-✅ Confirmed that all pages display correctly on:
-- Mobile (e.g. iPhone SE)
+✅ Confirmed that all pages display as intended on:
+- Mobile (e.g. Samsung A51, Iphone)
 - Tablet (e.g. iPad)
-- Laptop (e.g. MacBook Air)
+- Laptop (e.g. Asus Vivobook)
 - Desktop (1080p screen)
 
 All elements (cards, buttons, forms) stack or resize as expected for readability and usability.
+
+*Asus Vivobook*
+![Top homepage](static\images\asus.vivobook1.png)
+![Top post list](static\images\asus.vivobook2.png)
+![Log in](static\images\asus.vivobook3.png)
+
 
 ---
 
@@ -179,16 +185,46 @@ There were no styling or functionality issues detected in these browsers.
 ---
 
 ### HTML & CSS Validation
+#### HTML
 
-#### HTML Validation
-All template files were validated using the [W3C HTML Validator](https://validator.w3.org/).  
-✅ No critical errors. Some known Django-specific syntax (e.g. `{% %}`) were ignored.
+The live rendered pages were validated using the [W3C HTML Validator](https://validator.w3.org/) by entering the public URLs.  
+✅ No critical errors found. This approach avoids false errors caused by Django template syntax (e.g., `{% %}` tags).
+
+*Homepage*
+![HTML Validation Homepage](static\images\validator.index.png)
+
+*Post list*
+![HTML Validation Post list](static\images\validator.postlist.png)
+
+*Post details*
+![HTML Validation Post details](static\images\validator.postdetails.png)
+During HTML validation, a warning appeared regarding the `<hr>` tag and the trailing slash (`/`).  
+However, inspection in browser DevTools shows the tag is rendered correctly as `<hr>` without a trailing slash.
+
+This indicates that the warning is a false positive and does not affect the rendered page.
+
+![DevTools Screenshot of `<hr>` tag](static\images\validator.devtools.png)
+
+
+*Log in*
+![HTML Validation Post list](static\images\validator.login.png)
+
+*Sign up*
+![HTML Validation Post list](static\images\validator.signup.png)
 
 #### CSS Validation
+
 The main stylesheet (`base.css`) was tested using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).  
-✅ Passed with minor warnings related to vendor-specific rules.
+✅ Passed without errors.
+
+![CSS Validation Screenshot](static\images\validator.css.png)
 
 ---
+### Lighthouse Performance Testing
+
+The Care4Dogs homepage was tested with Google Lighthouse, achieving high scores across key categories including Performance, Accessibility, Best Practices, and SEO.
+
+![Lighthouse Performance](static\images\lighthouse.png)
 
 ### Bugs
 
