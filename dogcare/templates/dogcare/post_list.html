@@ -1,8 +1,7 @@
 {% extends "base.html" %} {% load cloudinary_filters %} {% block content %}
 <div class="container mt-5 pt-3">
   <a href="{% url 'post_create' %}" class="btn btn-primary mb-4"
-    >Add New Post</a
-  >
+    >Add New Post</a>
 
   <h2 class="mb-4">Dog Care Posts 🐶</h2>
 
@@ -15,8 +14,7 @@
         <img
           src="{{ post.image.url|cloud_crop:'400x300' }}"
           alt="Bild för {{ post.title }}"
-          class="card-img-top"
-        />
+          class="card-img-top">
         {% endif %}
         <div class="card-title-container">
           <h5 class="card-title mb-0 px-3 py-2">
