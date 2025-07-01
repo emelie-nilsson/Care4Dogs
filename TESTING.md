@@ -3,16 +3,15 @@
 ## Table of content
 - [ User Stories](#-user-stories)
 - [ Manual Testing](#-manual-testing)
-- [Validation testing](#validation-testing)
+- [ Validation testing](#validation-testing)
 - [ Automated Testing](#automated-testing)
 - [ Bugs](#-bugs)
-- [ Further Testing Ideas](#5-further-testing-ideas)
 
----
+
 
 ### User Stories
 
-Below are all user stories with their corresponding test validation steps.
+Below are the user stories with their corresponding test validation steps.
 
 ---
 
@@ -109,52 +108,16 @@ Below are all user stories with their corresponding test validation steps.
 | Admin can delete any post                                     | Log in as admin and delete any user’s post                | Post is removed                         |   Pass ✅        |     ![Confirmation of deleted post](static\images\userstory9a.png)       |
 | A confirmation message appears before a post gets deleted                | Click delete on a post                                    | Prompt confirms the action                                        |   Pass ✅        |  ![Confirmation before delete](static\images\userstory9b.png)           |
 | Deleted posts are removed immediately from public view        | Confirm deletion                                          | Post no longer visible to any user                                |  Pass ✅         |  ![Post deleted](static\images\userstory9c.png)           |
----
-### Form Validation Tests
-
-These automated tests ensure that key form validation logic works as expected. All tests were written using Django’s TestCase framework and can be run with `python manage.py test`.
-
-#### ✅ CommentForm
-
-| Test Name           | Purpose                                  | Result |
-|---------------------|-------------------------------------------|--------|
-| test_form_is_valid  | Checks that the comment form validates when content is provided | ✅ Passes |
-
-#### ✅ DogCarePostForm
-
-| Test Name                     | Purpose                                                                 | Result |
-|-------------------------------|-------------------------------------------------------------------------|--------|
-| test_valid_form               | Ensures form passes with all required fields                           | ✅ Passes |
-| test_missing_title            | Ensures form fails if title is empty                                   | ✅ Passes |
-| test_missing_dates            | Ensures form fails if date_from or date_to are missing                 | ✅ Passes |
-| test_date_to_before_date_from| Ensures form fails if end date is before start date, using custom clean() | ✅ Passes |
-
----
-
-> All form validation tests passed successfully as of `2025-06-30`. The forms now include custom validation logic for date order.
-
----
-
-### View Tests
-![View testing](static\images\test_views.png)
-
-The image shows how a test user and a test post are created, including an empty image file.
-
-Purpose: To verify that the views work correctly without triggering Cloudinary errors.
-
-✅ Result: All view tests passed:
-- The post list view loads successfully.
-- Login is required to access the post creation view.
 
 
----
+## Manual Testing
 
 ### Responsive Design Testing
 
 The application was tested across multiple screen sizes, with Chrome DevTools, and with [Am I Responsive](http://ami.responsivedesign.is/).
 
 ✅ Confirmed that all pages display as intended on:
-- Mobile (e.g. Samsung Galaxy A51, Iphone)
+- Mobile (e.g. Samsung Galaxy A51, Iphone 15)
 - Tablet (e.g. iPad)
 - Laptop (e.g. Asus Vivobook)
 - Desktop (1080p screen)
@@ -177,12 +140,12 @@ All elements (cards, buttons, forms) stack or resize as expected for readability
 
 The site was tested and works as expected in the following browsers:
 
-| Browser         | Version       | Result |
-|-----------------|----------------|--------|
-| Google Chrome   | Latest (Windows & macOS) | ✅ Pass |
-| Mozilla Firefox | Latest (Windows)         | ✅ Pass |
-| Microsoft Edge  | Latest                   | ✅ Pass |
-| Safari          | macOS & iOS              | ✅ Pass |
+| Browser         | Result |
+|-----------------|--------|
+| Google Chrome   |✅ Pass |
+| Mozilla Firefox |✅ Pass |
+| Microsoft Edge  |✅ Pass |
+| Safari          |✅ Pass |
 
 There were no styling or functionality issues detected in these browsers.
 
@@ -229,7 +192,88 @@ The Care4Dogs homepage was tested with Google Lighthouse, achieving high scores 
 
 ![Lighthouse Performance](static\images\lighthouse.png)
 
-### Bugs
+## Automated Testing
 
-No major bugs were discovered during testing.
+### Form Validation Tests
+
+These automated tests ensure that key form validation logic works as expected. All tests were written using Django’s TestCase framework and can be run with `python manage.py test`.
+
+#### ✅ CommentForm
+
+| Test Name           | Purpose                                  | Result |
+|---------------------|-------------------------------------------|--------|
+| test_form_is_valid  | Checks that the comment form validates when content is provided | ✅ Passes |
+
+#### ✅ DogCarePostForm
+
+| Test Name                     | Purpose                                                                 | Result |
+|-------------------------------|-------------------------------------------------------------------------|--------|
+| test_valid_form               | Ensures form passes with all required fields                           | ✅ Passes |
+| test_missing_title            | Ensures form fails if title is empty                                   | ✅ Passes |
+| test_missing_dates            | Ensures form fails if date_from or date_to are missing                 | ✅ Passes |
+| test_date_to_before_date_from| Ensures form fails if end date is before start date, using custom clean() | ✅ Passes |
+
+---
+
+> All form validation tests passed successfully as of `2025-06-30`. The forms now include custom validation logic for date order.
+
+---
+
+### View Tests
+![View testing](static\images\test_views.png)
+
+The image shows how a test user and a test post are created, including an empty image file.
+
+Purpose: To verify that the views work correctly without triggering Cloudinary errors.
+
+✅ Result: All view tests passed:
+- The post list view loads successfully.
+- Login is required to access the post creation view.
+
+
+
+## Bugs
+
+### ❗ Known Issue: Mixed Content Warning
+
+During testing, a mixed content warning appeared in the browser console:
+![Warning](static\images\warning.png)
+
+According to common troubleshooting resources, this may occur when external resources (such as images from Cloudinary) are returned with `http://` URLs instead of `https://`. Modern browsers typically upgrade these requests automatically, so images still display correctly and securely.
+
+This does not currently affect the functionality or security of the live application. The issue is likely caused by how Cloudinary returns image URLs during post creation.
+
+ An attempt was made to explicitly configure Cloudinary to return `https://` URLs. However, this resulted in a crash of the deployed app, likely due to conflicts in authentication or environment configuration (related to Heroku + MFA access tokens). Therefore, the change was reverted to restore app functionality.
+
+The warning has no visible impact and may be revisited in a future update or production refinement.
+
+### Other Bugs & Issues Encountered
+
+Throughout development, a number of  bugs were identified and resolved. Here are some examples:
+
+- **Post images not displaying correctly**  
+    - The Cloudinary image didn’t appear on cards due to missing `.url` in the template.  
+  ✅ Fixed by updating `{{ post.image }}` to `{{ post.image.url }}`.
+
+
+- **No confirmation before deleting a post**  
+    - Initially, clicking "Delete" removed a post without warning.  
+  ✅ Solved by adding a simple `onclick="return confirm(...);"` inline in the template.
+
+- **Footer not sticking to the bottom**  
+    -  The footer floated mid-page when content was short.  
+  ✅ Resolved by using `flex` layout on `body` and `main { flex: 1; }`.
+
+- **Validation errors due to void elements**  
+    -  HTML Validator flagged trailing slashes  as problematic.  
+    ✅ All void elements were changed to the correct format.  
+ℹ️ Some slashes might still show up online, added automatically by services like Cloudinary.
+
+- **Comment form overlapping with footer**  
+    - On mobile, the form overlapped with the footer.  
+  ✅ Fixed with proper spacing and layout tweaks.
+
+- **Heroku login blocked by MFA**  
+    - Could not access logs or deploy due to Multi-Factor Authentication issues.  
+  ✅ Contacted Heroku support and temporarily switched settings to restore access.
 
