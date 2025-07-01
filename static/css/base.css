@@ -1,9 +1,7 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-
-
-/* General */
+/* Root Variables */
 :root {
   --primary-font: "Nunito", sans-serif;
   --secondary-font: "Raleway", sans-serif;
@@ -14,16 +12,17 @@
   --light-highlight-color: #a08653; /* Gold brown */
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  font-family: var(--primary-font);
-}
-
+/* Base Styles */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: var(--primary-font);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2, h3, h4 {
@@ -35,12 +34,14 @@ h1, h2, h3, h4 {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  padding: 0 1rem; 
 }
 
 main {
   flex: 1;
 }
 
+/* Text Utilities */
 .text-primary {
   color: var(--primary-color) !important;
 }
@@ -75,37 +76,40 @@ main {
   font-family: var(--secondary-font);
 }
 
-/* Review */
+/* Quotes */
 .quote-snippet {
-  padding: 0.1rem 0.8rem;
+  padding: 0.8rem;
   font-family: var(--primary-font);
   line-height: 1.2;
+  font-size: 0.95rem;
 }
 
 .quote-left,
-.quote-right {
-  max-width: 480px;
-  margin-top: 0.6rem;
-  margin-bottom: 0.3rem;
+.quote-right,
+.quote-center {
+  max-width: 600px;
+  margin: 0.6rem 0.5rem 0.3rem 0.5rem;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .quote-left {
   margin-left: 0;
-  margin-right: auto;
 }
 
 .quote-right {
-  margin-left: auto;
+  float: right;
   margin-right: 0;
 }
 
 .quote-center {
-  max-width: 600px;
+  text-align: center;
+  display: block;
   margin: 0.6rem auto 0.3rem auto;
 }
 
 .quote-text {
-  font-size: 0.95rem;
   font-style: italic;
   color: #666;
   margin-bottom: 0.1rem;
@@ -115,6 +119,7 @@ main {
   font-size: 0.75rem;
   color: #999;
   margin-bottom: 0;
+  display: block;
 }
 
 /* Post List */
@@ -167,7 +172,7 @@ main {
   color: var(--middle-color);
 }
 
-/* Post Details */
+/* Post Detail */
 .comment-box {
   background-color: var(--highlight-color);
   padding: 1rem;
@@ -181,6 +186,7 @@ main {
   border: none;
   background: none;
   padding: 0;
+  transition: color 0.3s ease;
 }
 
 .like-button:hover {
@@ -193,31 +199,28 @@ main {
   border-radius: 0.5rem;
 }
 
+.like-form {
+  width: fit-content;
+}
+
 /* Footer */
-footer {
-  width: 100vw;
+footer,
+.site-footer {
   background-color: var(--highlight-color);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  color: var(--primary-color);
+  border-top: 1px solid var(--light-highlight-color);
   padding: 1rem;
+  width: 100%;
+  margin: 0;
+}
+
+.full-width-footer {
+  width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-}
-
-.social-icon {
-  font-size: 1.5rem;
-  margin: 1rem;
-  color: var(--secondary-color);
-  transition: color 0.3s ease;
-}
-
-.social-icon:hover {
-  color: var(--light-highlight-color);
 }
 
 #social-networks {
@@ -226,14 +229,27 @@ footer {
   flex-direction: row;
   padding: 0;
   margin: 0;
+  justify-content: center;
 }
 
 #social-networks li {
   margin: 0 0.5rem;
 }
 
+.social-icon {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
+  margin: 1rem;
+}
+
+.social-icon:hover {
+  color: var(--light-highlight-color);
+}
+
 /* Header */
-.navbar {
+.navbar,
+.custom-navbar {
   background-color: var(--highlight-color) !important;
   box-shadow: none !important;
   opacity: 1 !important;
@@ -244,36 +260,25 @@ a.nav-link {
   color: var(--secondary-color);
 }
 
-/* Log In, Sign Up Forms */
-.signup-card,
-.login-card {
-  background-color: var(--highlight-color);
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+.logo {
+  max-height: 50px;
 }
 
-/* Log In, Sign Up Buttons */
-.custom-btn {
+/* Buttons */
+.custom-btn,
+.btn-primary,
+.btn {
   background-color: var(--secondary-color);
   color: white;
   border: none;
 }
 
-.custom-btn:hover {
+.custom-btn:hover,
+.btn-primary:hover,
+.btn:hover {
   background-color: var(--light-highlight-color);
   color: var(--primary-color);
-}
-
-.btn-primary {
-  background-color: var(--secondary-color); 
-  border-color: var(--secondary-color);
-}
-
-.btn-primary:hover {
-  background-color: var(--light-highlight-color); 
   border-color: var(--light-highlight-color);
-  color: var(--primary-color);
 }
 
 .btn-outline-primary {
@@ -285,8 +290,62 @@ a.nav-link {
   background-color: var(--light-highlight-color);
   color: var(--primary-color);
 }
+/* Edit button */
+.btn-outline-edit {
+  color: #6c757d; 
+  border: 1px solid #6c757d;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-/*  Media Queries */
+.btn-outline-edit:hover,
+.btn-outline-edit:focus {
+  background-color: #6c757d;
+  color: white;
+  text-decoration: none;
+}
+
+/* Delete button */
+.btn-outline-delete {
+  color: #dc3545; 
+  border: 1px solid #dc3545;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-delete:hover,
+.btn-outline-delete:focus {
+  background-color: #dc3545;
+  color: white;
+  text-decoration: none;
+}
+
+
+/* Forms */
+.signup-card,
+.login-card {
+  background-color: var(--highlight-color);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-actions .btn {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+/* 404 Page */
+.page-not-found-title {
+  color: var(--secondary-color);
+}
+
+.lost-dog-img {
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Media Queries */
 @media (min-width: 768px) {
   .post-image {
     max-width: 500px;
@@ -303,43 +362,7 @@ a.nav-link {
     margin-bottom: 1rem;
   }
 
-  .quote-snippet {
-    padding: 0.8rem;
-    font-size: 0.95rem;
-  }
-
-  .quote-text {
-    font-size: 1rem;
-    text-align: center;
-  }
-
-  .quote-author {
-    text-align: center;
-    display: block;
-  }
-
-  .quote-left,
-  .quote-right,
-  .quote-center {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  .how-it-works-section {
-    padding: 3rem 1rem;
-  }
-
-  .page-container {
-    padding: 0 1rem;
-  }
-
   .navbar-nav .nav-item {
     margin-bottom: 0.5rem;
-  }
-
-  /* Parallell buttons */
-  .form-actions .btn {
-    width: 100%;
-    margin-bottom: 0.75rem;
   }
 }

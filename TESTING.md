@@ -145,3 +145,62 @@ Purpose: To verify that the views work correctly without triggering Cloudinary e
 ✅ Result: All view tests passed:
 - The post list view loads successfully.
 - Login is required to access the post creation view.
+
+
+---
+
+### Responsive Design Testing
+
+The application was tested across multiple screen sizes using Chrome DevTools, and with [Am I Responsive](http://ami.responsivedesign.is/).
+
+✅ Confirmed that all pages display correctly on:
+- Mobile (e.g. iPhone SE)
+- Tablet (e.g. iPad)
+- Laptop (e.g. MacBook Air)
+- Desktop (1080p screen)
+
+All elements (cards, buttons, forms) stack or resize as expected for readability and usability.
+
+---
+
+### Browser Compatibility
+
+The site was tested and works as expected in the following browsers:
+
+| Browser         | Version       | Result |
+|-----------------|----------------|--------|
+| Google Chrome   | Latest (Windows & macOS) | ✅ Pass |
+| Mozilla Firefox | Latest (Windows)         | ✅ Pass |
+| Microsoft Edge  | Latest                   | ✅ Pass |
+| Safari          | macOS & iOS              | ✅ Pass |
+
+There were no styling or functionality issues detected in these browsers.
+
+---
+
+### HTML & CSS Validation
+
+#### HTML Validation
+All template files were validated using the [W3C HTML Validator](https://validator.w3.org/).  
+✅ No critical errors. Some known Django-specific syntax (e.g. `{% %}`) were ignored.
+
+#### CSS Validation
+The main stylesheet (`base.css`) was tested using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).  
+✅ Passed with minor warnings related to vendor-specific rules.
+
+---
+
+### Bugs
+
+No major bugs were discovered during testing.
+
+---
+
+### Further Testing Ideas
+
+If future development is planned, additional testing suggestions include:
+
+- Write automated tests for comment views and user profile views  
+- Use a tool like Selenium or Cypress for end-to-end testing  
+- Improve accessibility testing (contrast, keyboard nav, ARIA roles)  
+- Test under low-bandwidth or offline conditions  
