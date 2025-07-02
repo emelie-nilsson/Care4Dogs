@@ -182,7 +182,7 @@ This indicates that the warning is a false positive and does not affect the rend
 The main stylesheet (`base.css`) was tested using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).  
 ✅ Passed without errors.
 
-![CSS Validation Screenshot](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images7validator.css.png)
+![CSS Validation Screenshot](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/validator.css.png)
 
 ---
 ### Lighthouse Performance Testing
@@ -233,46 +233,50 @@ Purpose: To verify that the views work correctly without triggering Cloudinary e
 
 ## Bugs
 
-### ❗ Known Issue: Mixed Content Warning
+### ❗ Mixed Content Warning (Resolved)
 
-During testing, a mixed content warning appeared in the browser console:
-![Warning](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/warning.png)
+During earlier testing, a mixed content warning appeared in the browser console:
 
-According to common troubleshooting resources, this may occur when external resources (such as images from Cloudinary) are returned with `http://` URLs instead of `https://`. Modern browsers typically upgrade these requests automatically, so images still display correctly and securely.
+![Mixed Content Warning](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/warning.png)
 
-This does not currently affect the functionality or security of the live application. The issue is likely caused by how Cloudinary returns image URLs during post creation.
+This warning was caused by external resources (such as images from Cloudinary) being loaded via `http://` URLs instead of secure `https://` URLs. Modern browsers often upgrade such requests automatically, so the issue did not affect the functionality or security of the live application.
 
- An attempt was made to explicitly configure Cloudinary to return `https://` URLs. However, this resulted in a crash of the deployed app, likely due to conflicts in authentication or environment configuration (related to Heroku + MFA access tokens). Therefore, the change was reverted to restore app functionality.
 
-The warning has no visible impact and may be revisited in a future update or production refinement.
+### ✅ Resolution
+
+The root cause was identified in how Cloudinary returned image URLs during post creation. The solution involved explicitly configuring Cloudinary to use secure `https://` URLs, eliminating the mixed content warnings.
+
+Here is a screenshot demonstrating the resolved state with no warnings:
+
+![Cloudinary Warning](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/warning-cloudinary.png)
+
+---
 
 ### Other Bugs & Issues Encountered
 
-Throughout development, a number of  bugs were identified and resolved. Here are some examples:
+Throughout development, a number of bugs were identified and resolved. Here are some examples:
 
 - **Post images not displaying correctly**  
     - The Cloudinary image didn’t appear on cards due to missing `.url` in the template.  
   ✅ Fixed by updating `{{ post.image }}` to `{{ post.image.url }}`.
 
-
 - **No confirmation before deleting a post**  
-    - Initially, clicking "Delete" removed a post without warning.  
-  ✅ Solved by adding a simple `onclick="return confirm(...);"` inline in the template.
+    - Clicking "Delete" removed posts immediately without warning.  
+  ✅ Added an inline confirmation prompt using `onclick="return confirm(...);"`.
 
 - **Footer not sticking to the bottom**  
-    -  The footer floated mid-page when content was short.  
-  ✅ Resolved by using `flex` layout on `body` and `main { flex: 1; }`.
+    - Footer floated mid-page when content was short.  
+  ✅ Fixed using flex layout on `body` and `main { flex: 1; }`.
 
 - **Validation errors due to void elements**  
-    -  HTML Validator flagged trailing slashes  as problematic.  
-    ✅ All void elements were changed to the correct format.  
-ℹ️ Some slashes might still show up online, added automatically by services like Cloudinary.
+    - HTML Validator flagged trailing slashes as problematic.  
+  ✅ Corrected all void elements to the proper HTML5 format.  
+  ℹ️ Some slashes might still be added automatically by services like Cloudinary.
 
-- **Comment form overlapping with footer**  
-    - On mobile, the form overlapped with the footer.  
-  ✅ Fixed with proper spacing and layout tweaks.
+- **Comment form overlapping with footer on mobile**  
+    - Overlap issue fixed by adjusting spacing and layout.
 
 - **Heroku login blocked by MFA**  
-    - Could not access logs or deploy due to Multi-Factor Authentication issues.  
-  ✅ Contacted Heroku support and temporarily switched settings to restore access.
+    - Multi-Factor Authentication issues prevented access to logs and deployment.  
+  ✅ Resolved by contacting Heroku support and adjusting MFA settings temporarily.
 
