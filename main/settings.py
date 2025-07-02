@@ -13,7 +13,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
 SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+# DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = True
 ALLOWED_HOSTS = [
     'care4dogs-60c9d8251c5f.herokuapp.com',
     'localhost',
@@ -26,7 +27,10 @@ if 'test' not in sys.argv:
     cloudinary_url = os.getenv("CLOUDINARY_URL")
     if not cloudinary_url:
         raise ValueError("CLOUDINARY_URL environment variable is not set")
-    cloudinary.config(cloudinary_url=cloudinary_url)
+    cloudinary.config(
+        cloudinary_url=cloudinary_url,
+        secure=True
+        )
 
 # File storage
 if 'test' in sys.argv:

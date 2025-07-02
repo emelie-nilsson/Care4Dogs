@@ -2,3 +2,4 @@
 env.py
 /staticfiles/
 __pycache__/
+fixtures/dogcare_posts_backup.json
