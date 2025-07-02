@@ -126,6 +126,7 @@ AUTHENTICATION_BACKENDS = [
 # Email backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+
 # Allauth config
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
@@ -137,6 +138,10 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 ACCOUNT_LOGOUT_ON_GET = True
+
+
+
+
 
 # Crispy Forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'

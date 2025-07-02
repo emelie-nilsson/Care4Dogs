@@ -5,7 +5,7 @@
 - [ Manual Testing](#-manual-testing)
 - [ Validation testing](#validation-testing)
 - [ Automated Testing](#automated-testing)
-- [ Bugs](#-bugs)
+- [ Bugs](#bugs)
 
 
 
@@ -160,7 +160,7 @@ The following table documents manual testing of navigational links and interacti
 |                          | Add Post                            | Opens the form to create a new post      | ✅     |
 |                          | Log In                              | Opens the login form                                                   | ✅     |
 |                          | Sign Up                             | Opens the registration form                                            | ✅     |
-|                          | Log Out                             | Logs out user and shows logout confirmation                            | ✅     |
+|                          | Log Out                             | Logs out user                             | ✅     |
 | **Footer**               | Facebook icon                       | Opens Facebook page in new tab                                         | ✅     |
 |                          | Twitter (X) icon                    | Opens Twitter/X page in new tab                                        | ✅     |
 |                          | YouTube icon                        | Opens YouTube page in new tab                                          | ✅     |
@@ -177,9 +177,7 @@ The following table documents manual testing of navigational links and interacti
 |                          | Like button (heart icon)           | Increments/decrements like count                                       | ✅     |
 | **Delete Confirmation**  | Yes, delete post button             | Deletes the post and redirects to post list                            | ✅     |
 |                          | Cancel button                       | Cancels deletion and stays on current page                             | ✅     |
-| **Logout Page**          | “You have been logged out” message  | Confirmation message is displayed                                      | ✅     |
-|                          | Back to homepage button             | Redirects to homepage                                                  | ✅     |
-|                          | Log back in button                  | Redirects to login form                                                | ✅     |
+| 
 
 **Status** ✅ = Working as expected
 
