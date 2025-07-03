@@ -131,7 +131,8 @@ All elements (cards, buttons, forms) stack or resize as expected for readability
 *Samsung Galaxy A51*  
 ![Post list](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/samsung1.jpg)
 ![Post details](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/samsung2.jpg)
-![Logged out](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/samsung3.jpg)
+![Sign in form](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/samsung3.jpg)  
+![Logged out](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/samsung4.jpg)
 
 ---
 
@@ -157,16 +158,16 @@ The following table documents manual testing of navigational links and interacti
 |--------------------------|-------------------------------------|-------------------------------------------------------------------------|--------|
 | **Navbar**               | Logo                                | Redirects to homepage                                                  | ✅     |
 |                          | All Posts                           | Opens the page listing all posts                                       | ✅     |
-|                          | Add Post                            | Opens the form to create a new post      | ✅     |
+|                          | Add Post                            | Opens the form to create a new post                                    | ✅     |
 |                          | Log In                              | Opens the login form                                                   | ✅     |
 |                          | Sign Up                             | Opens the registration form                                            | ✅     |
-|                          | Log Out                             | Logs out user                             | ✅     |
+|                          | Log Out                             | Logs out user and show confirmation page                               | ✅     |
 | **Footer**               | Facebook icon                       | Opens Facebook page in new tab                                         | ✅     |
 |                          | Twitter (X) icon                    | Opens Twitter/X page in new tab                                        | ✅     |
 |                          | YouTube icon                        | Opens YouTube page in new tab                                          | ✅     |
 |                          | Instagram icon                      | Opens Instagram page in new tab                                        | ✅     |
 | **Homepage**             | View All Posts button               | Redirects to all posts page                                            | ✅     |
-|                          | Create a Post button                | Opens post creation form (or log in form if not logged in)                 | ✅     |
+|                          | Create a Post button                | Opens post creation form (or log in form if not logged in)             | ✅     |
 | **Post List Page**       | Add New Post button                 | Opens post creation form                                               | ✅     |
 |                          | Edit (own post only)                | Opens post editing form                                                | ✅     |
 |                          | Delete (own post only)              | Opens delete confirmation modal                                        | ✅     |
@@ -177,7 +178,9 @@ The following table documents manual testing of navigational links and interacti
 |                          | Like button (heart icon)           | Increments/decrements like count                                       | ✅     |
 | **Delete Confirmation**  | Yes, delete post button             | Deletes the post and redirects to post list                            | ✅     |
 |                          | Cancel button                       | Cancels deletion and stays on current page                             | ✅     |
-| 
+| **Log out confirmation** | Go to homepage                      | Redirects to homepage                                                  | ✅     |
+|                          | Log back in                         | Redirects to Log in form                                               | ✅     |
+| **404 Page**             | Back to homepage button             | Redirects to homepage when page is not found                           | ✅     |
 
 **Status** ✅ = Working as expected
 
