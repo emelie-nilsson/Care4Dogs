@@ -25,11 +25,14 @@ from django.shortcuts import render  # For test-404 view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    path('dogcare/', include('dogcare.urls')),
-    path("accounts/", include("allauth.urls")),
+    # path('dogcare/', include('dogcare.urls')),
+    # path("accounts/", include("allauth.urls")),
 
     # Log-out view that shows logout.html instead of returning to homepage
     path("accounts/logout/", LogoutView.as_view(template_name="allauth/account/logout.html"), name="account_logout"),
+    path('dogcare/', include('dogcare.urls')),
+    path("accounts/", include("allauth.urls")),
+
 
     # Test route for 404 page
     path("test-404/", lambda request: render(request, '404.html', status=404)),
