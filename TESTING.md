@@ -1,13 +1,11 @@
 # Testing
 
 ## Table of content
-- [ User Stories](#-user-stories)
-- [ Manual Testing](#-manual-testing)
-- [ Validation testing](#validation-testing)
-- [ Automated Testing](#automated-testing)
-- [ Bugs](#bugs)
-
-
+- [User Stories](#user-stories)
+- [Manual Testing](#manual-testing)
+- [Validation Testing](#validation-testing)
+- [Automated Testing](#automated-testing)
+- [Bugs](#bugs)
 
 ### User Stories
 
@@ -64,7 +62,7 @@ Below are the user stories with their corresponding test validation steps.
 
 | Acceptance Criteria                                           | Steps to Test                                            | Expected Outcome                                                   | Pass/Fail | Screenshot |
 |---------------------------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------|-----------|------------|
-| Users can respond to help requests                            | Click on another user’s post                              | Option to comment, message, or connect is shown                    |   Pass ✅       |   ![Responsed comment](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/userstory5a.png)         |
+| Users can respond to help requests                            | Click on another user’s post                              | Option to comment is shown                    |   Pass ✅       |   ![Responsed comment](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/userstory5a.png)         |
 | Users can like posts as a way to show support                 | Click like on a post                                      | Like is registered and visually updated                            |Pass ✅          | ![Like counter](https://github.com/emelie-nilsson/Care4Dogs/raw/main/static/images/userstory5b.png)           |
 
 ---
