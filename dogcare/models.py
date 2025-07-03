@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField  # Lägg till denna import
+from cloudinary.models import CloudinaryField  
 from django.utils.timezone import now
 
 """

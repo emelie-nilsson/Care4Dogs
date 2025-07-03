@@ -4,7 +4,7 @@ import sys
 import dj_database_url
 import cloudinary
 
-# Load local environment variables if present (only on local dev)
+# Load local environment variables
 if os.path.isfile('env.py'):
     import env
 
@@ -13,7 +13,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
 SECRET_KEY = os.environ.get("SECRET_KEY")
-# DEBUG = os.environ.get("DEBUG", "False") == "True"
 DEBUG = False
 ALLOWED_HOSTS = [
     'care4dogs-60c9d8251c5f.herokuapp.com',
@@ -22,7 +21,7 @@ ALLOWED_HOSTS = [
     '.herokuapp.com'
 ]
 
-# Cloudinary (only configure if not running tests)
+# Cloudinary 
 if 'test' not in sys.argv:
     cloudinary_url = os.getenv("CLOUDINARY_URL")
     if not cloudinary_url:
@@ -138,9 +137,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 ACCOUNT_LOGOUT_ON_GET = True
-
-
-
 
 
 # Crispy Forms
